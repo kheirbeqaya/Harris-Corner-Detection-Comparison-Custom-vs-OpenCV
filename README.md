@@ -1,4 +1,5 @@
-# Harris-Corner-Detection-Comparison-Custom-vs-OpenCV
+# Harris Corner Detection: Custom vs OpenCV
+
 Comparison between a manually implemented Harris Corner Detector and OpenCV's built-in Harris function using Python and OpenCV.
 
 ---
@@ -9,9 +10,9 @@ Corner detection is a fundamental problem in computer vision used for feature ex
 This project presents a comparative study between a **manually implemented Harris Corner Detector** and the **OpenCV built-in implementation**.
 
 The goal is to analyze:
-- Detection consistency
-- Robustness to noise
-- Spatial agreement between detected keypoints
+- Detection consistency  
+- Robustness to noise  
+- Spatial agreement between detected keypoints  
 
 Additionally, a matching procedure is applied to evaluate the correspondence between both methods.
 
@@ -48,38 +49,62 @@ The pipeline consists of four main stages:
 ##  Mathematical Formulation
 
 ### 1. Image Gradients
+
 Ix = dI/dx  
 Iy = dI/dy  
 
-
 ---
 
-### 2. Structure Tensor
-M = [ Ix²   IxIy  
-      IxIy  Iy² ]
+### 2. Structure Tensor (Second-Moment Matrix)
 
+After computing gradient products:
 
-Smoothed using Gaussian filter:
+Ix² → intensity change in x direction  
+Iy² → intensity change in y direction  
+Ix · Iy → correlation between directions  
 
-S = G * M
+Apply Gaussian smoothing:
+
+Sxx = G * (Ix²)  
+Syy = G * (Iy²)  
+Sxy = G * (Ix · Iy)  
+
+Where G is a Gaussian filter.
+
+Structure tensor:
+
+S = [ Sxx   Sxy  
+      Sxy   Syy ]
 
 ---
 
 ### 3. Harris Response Function
 
-R = det(S) - k * (trace(S))²
+R = det(S) - k * (trace(S))²  
 
 Where:
+
 det(S) = Sxx * Syy - (Sxy)²  
 trace(S) = Sxx + Syy  
-k ≈ 0.04
+k ≈ 0.04  
+
+---
+
+### 4. Interpretation
+
+- If Ix ≈ 0 and Iy ≈ 0 → Flat region (no features)  
+- If one is large → Edge  
+- If both are large → Corner  
+
+Harris detects corners by analyzing intensity variation in both directions.
+
 ---
 
 ##  Discussion
 
 ### 1. Detection Differences
 The custom implementation is more sensitive to noise due to manual construction of the structure tensor.  
-OpenCV version is more stable because it uses optimized Gaussian filtering and internal enhancements.
+The OpenCV version is more stable due to optimized Gaussian filtering and internal optimizations.
 
 ### 2. Corner Distribution
 Both methods detect similar high-intensity corner regions.  
@@ -90,8 +115,8 @@ Spatial matching shows a high overlap between both methods.
 Small differences arise due to smoothing and thresholding variations.
 
 ### 4. Limitations
-- Manual NMS is computationally slow  
-- Matching is based on spatial proximity only, not descriptor similarity  
+- Manual NMS is computationally expensive  
+- Matching is based only on spatial proximity  
 
 ---
 
@@ -114,7 +139,7 @@ Small differences arise due to smoothing and thresholding variations.
 
 ##  Conclusion
 
-Both implementations demonstrate the effectiveness of the Harris corner detector.  
+Both implementations demonstrate the effectiveness of the Harris corner detector.
 
 - Custom implementation → educational and interpretable  
 - OpenCV implementation → optimized and robust  
@@ -123,4 +148,6 @@ Both implementations demonstrate the effectiveness of the Harris corner detector
 
 ##  Author
 
-Aya Kheir Beq MSc in Mechatronics Engineering Focus: Computer Vision, Robotics, Intelligent Systems
+**Aya Kheir Beq**  
+MSc in Mechatronics Engineering  
+Focus: Computer Vision, Robotics, Intelligent Systems
