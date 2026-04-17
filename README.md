@@ -48,41 +48,31 @@ The pipeline consists of four main stages:
 ##  Mathematical Formulation
 
 ### 1. Image Gradients
-\[
-I_x = \frac{\partial I}{\partial x}, \quad I_y = \frac{\partial I}{\partial y}
-\]
+Ix = dI/dx  
+Iy = dI/dy  
+
 
 ---
 
 ### 2. Structure Tensor
+M = [ Ix²   IxIy  
+      IxIy  Iy² ]
 
-\[
-M =
-\begin{bmatrix}
-I_x^2 & I_x I_y \\
-I_x I_y & I_y^2
-\end{bmatrix}
-\]
 
 Smoothed using Gaussian filter:
 
-\[
-S = G_\sigma * M
-\]
+S = G * M
 
 ---
 
 ### 3. Harris Response Function
 
-\[
-R = \det(S) - k \cdot (\text{trace}(S))^2
-\]
+R = det(S) - k * (trace(S))²
 
 Where:
-- \( \det(S) = S_{xx}S_{yy} - S_{xy}^2 \)
-- \( \text{trace}(S) = S_{xx} + S_{yy} \)
-- \( k \approx 0.04 \)
-
+det(S) = Sxx * Syy - (Sxy)²  
+trace(S) = Sxx + Syy  
+k ≈ 0.04
 ---
 
 ##  Discussion
