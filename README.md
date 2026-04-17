@@ -3,7 +3,7 @@ Comparison between a manually implemented Harris Corner Detector and OpenCV's bu
 
 ---
 
-## 🟩 Abstract
+##  Abstract
 
 Corner detection is a fundamental problem in computer vision used for feature extraction, image matching, and scene understanding.  
 This project presents a comparative study between a **manually implemented Harris Corner Detector** and the **OpenCV built-in implementation**.
@@ -45,12 +45,12 @@ The pipeline consists of four main stages:
 
 ---
 
-## 🟧 Methodology Diagram
+##  Methodology Diagram
 
 
 ---
 
-## 🟥 Mathematical Formulation
+##  Mathematical Formulation
 
 ### 1. Image Gradients
 \[
@@ -90,7 +90,7 @@ Where:
 
 ---
 
-## 🟪 Discussion
+##  Discussion
 
 ### 1. Detection Differences
 The custom implementation is more sensitive to noise due to manual construction of the structure tensor.  
@@ -110,7 +110,7 @@ Small differences arise due to smoothing and thresholding variations.
 
 ---
 
-## 🟫 Results
+##  Results
 
 ### Input Image
 ![Input](results/Harris_img.png)
@@ -127,7 +127,7 @@ Small differences arise due to smoothing and thresholding variations.
 
 ---
 
-## 🟦 Conclusion
+##  Conclusion
 
 Both implementations demonstrate the effectiveness of the Harris corner detector.  
 
@@ -136,6 +136,6 @@ Both implementations demonstrate the effectiveness of the Harris corner detector
 
 ---
 
-## 🟩 Author
+##  Author
 
 Aya Kheir Beq MSc in Mechatronics Engineering Focus: Computer Vision, Robotics, Intelligent Systems
