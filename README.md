@@ -47,6 +47,22 @@ The pipeline consists of four main stages:
 
 ##  Methodology Diagram
 
+Input Image
+│
+▼
+Grayscale Conversion
+│
+├───────────────┐
+▼ ▼
+Custom Harris OpenCV Harris
+│ │
+▼ ▼
+Corner Points Corner Points
+└──────┬────────┘
+▼
+Matching Module
+▼
+Matched Correspondences
 
 ---
 
