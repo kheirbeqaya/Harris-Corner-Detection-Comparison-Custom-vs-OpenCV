@@ -81,12 +81,13 @@ S = [ Sxx   Sxy
 ### 3. Harris Response Function
 
 R = det(S) - k * (trace(S))²  
-
 Where:
-
 det(S) = Sxx * Syy - (Sxy)²  
 trace(S) = Sxx + Syy  
 k ≈ 0.04  
+The parameter k in the Harris detector is an empirical constant that controls the sensitivity of the response function. It balances between edge and corner detection, and values around 0.04 provide a good trade-off between detecting strong corners and suppressing edges.
+
+
 
 ---
 
